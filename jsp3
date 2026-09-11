@@ -1,0 +1,80 @@
+/* =========================
+   MENU MOBILE
+========================= */
+
+function toggleMenu() {
+  const nav = document.getElementById("main-nav");
+
+  nav.classList.toggle("active");
+}
+
+
+function closeMenu() {
+  const nav = document.getElementById("main-nav");
+
+  nav.classList.remove("active");
+}
+
+
+/* =========================
+   GALERIE / LIGHTBOX
+========================= */
+
+const galleryImages =
+  document.querySelectorAll(".gallery-item img");
+
+const lightbox =
+  document.getElementById("lightbox");
+
+const lightboxImg =
+  document.getElementById("lightbox-img");
+
+
+galleryImages.forEach((image) => {
+
+  image.addEventListener("click", () => {
+
+    lightboxImg.src = image.src;
+
+    lightboxImg.alt = image.alt;
+
+    lightbox.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+
+  });
+
+});
+
+
+function closeLightbox() {
+
+  lightbox.classList.remove("active");
+
+  document.body.style.overflow = "";
+
+}
+
+
+lightbox.addEventListener("click", (event) => {
+
+  if (event.target === lightbox) {
+
+    closeLightbox();
+
+  }
+
+});
+
+
+/* Fermer avec la touche Échap */
+
+document.addEventListener("keydown", (event) => {
+
+  if (event.key === "Escape") {
+
+    closeLightbox();
+
+  }
+
+});
